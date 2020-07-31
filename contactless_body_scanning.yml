@@ -1,0 +1,173 @@
+esphome:
+  name: contactless_body_scanning
+  platform: ESP8266
+  board: nodemcuv2
+  includes:
+    - custom_mlx_sensor.h
+  libraries:
+    - "Adafruit MLX90614 Library"
+  on_boot:
+    priority: -10
+    then:
+    - light.turn_on:
+        id: notifyled
+        effect: Cyan Blink
+
+#######################################################
+wifi:
+  networks:
+  - ssid: "!SSID"
+    password: "!PASSWORD"
+  reboot_timeout: 0s
+  ap:
+    ssid: "contactless_body_scanning"
+    password: "ABCD"
+logger:
+  level: VERBOSE
+api:
+ota:
+web_server:
+  port: 80
+captive_portal:
+
+##################################################### 
+
+sensor:
+- platform: custom
+  lambda: |-
+    auto my_sensor = new CustommlxSensor();
+    App.register_component(my_sensor);
+    return {my_sensor->mlxesphomeatc_sensor, my_sensor->mlxesphomeatf_sensor, my_sensor->mlxesphomeotc_sensor, my_sensor->mlxesphomeotf_sensor};
+
+  sensors:
+  - name: "Room Temperature °C"
+  - name: "Room Temperature °F"
+  - name: "Body Temperature °C"
+  - name: "Body Temperature °F"
+    id: btfh
+    filters:
+      - multiply: 1.04
+#######################################################
+binary_sensor:
+  - platform: gpio
+    device_class: vibration
+    name: Hands Detection
+    id: hdetect
+    pin:
+      number: GPIO14
+      inverted: true
+    on_press:
+      then:
+      - light.turn_off:
+          id: notifyled
+      - delay: 1000ms
+      - display.page.show: page2
+      - if:
+          condition:
+            lambda: 'return id(btfh).state > 99.5;'
+          then:
+            - light.turn_on: 
+                id: notifyled
+                effect: Red Blink 
+          else:
+            - light.turn_on:
+                id: notifyled
+                effect: Green Blink 
+      - delay: 5000ms
+      - display.page.show: page1
+      - light.turn_on:
+          id: notifyled
+          effect: Cyan Blink
+######################################################
+i2c:
+  sda: D2
+  scl: D1
+  scan: True
+  id: bus_a
+
+font:
+  - file: "tahomabd.ttf"
+    id: font15
+    size: 15
+  - file: "calibri.ttf"
+    id: font14
+    size: 14  
+  - file: "calibri.ttf"
+    id: font18
+    size: 18
+  - file: "comicz.ttf"
+    id: font25
+    size: 25     
+    
+display:
+  - platform: ssd1306_i2c
+    model: "SSD1306 128x64"
+    address: 0x3C
+    id: my_display
+    pages:
+      - id: page1    
+        lambda: !lambda |-
+          it.printf(64, 0, id(font15), TextAlign::TOP_CENTER, "Welcome Home");
+          it.line(0, 20, 128, 20);
+          it.line(0, 21, 128, 21);
+          it.printf(64, 35, id(font14), TextAlign::BASELINE_CENTER , "Please Scan Your");
+          it.printf(64, 48, id(font14), TextAlign::BASELINE_CENTER , "Hand Here For");
+          it.printf(64, 60, id(font14), TextAlign::BASELINE_CENTER , "Temperature Check");
+#         it.printf(64, 13, id(font18), TextAlign::TOP_CENTER, "HOME");
+      - id: page2    
+        lambda: !lambda |-
+          it.printf(64, 0, id(font15), TextAlign::TOP_CENTER, "Welcome Home");
+          it.line(0, 20, 128, 20);
+          it.line(0, 21, 128, 21);
+          it.printf(64, 35, id(font14), TextAlign::BASELINE_CENTER , "Body Temperature");
+          it.printf(64, 60, id(font25), TextAlign::BASELINE_CENTER , "%.1f °F", id(btfh).state);
+###########################################################################################################
+
+light:
+  - platform: fastled_clockless
+    chipset: WS2811
+    pin: GPIO13
+    num_leds: 01
+    rgb_order: GRB
+#  - platform: neopixelbus
+#    type: GRB
+#    pin: GPIO13
+#    num_leds: 1
+#    method: ESP8266_DMA
+    name: "Notification LED"
+    id: notifyled
+    effects:
+      - strobe:
+          name: Cyan Blink
+          colors:
+            - state: True
+              brightness: 50%
+              red: 0%
+              green: 100%
+              blue: 100%
+              duration: 100ms
+            - state: False
+              duration: 100ms
+      - strobe:
+          name: Green Blink
+          colors:
+            - state: True
+              brightness: 25%
+              red: 0%
+              green: 100%
+              blue: 0%
+              duration: 500ms
+            - state: False
+              duration: 500ms
+      - strobe:
+          name: Red Blink
+          colors:
+            - state: True
+              brightness: 25%
+              red: 100%
+              green: 0%
+              blue: 0%
+              duration: 500ms
+            - state: False
+              duration: 1000ms 
+			  
