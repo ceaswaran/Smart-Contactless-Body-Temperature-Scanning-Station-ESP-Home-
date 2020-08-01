@@ -27,7 +27,7 @@ It can be used in any place in line with Home Integration platform which support
 7. M3 x 6mm. Qty = 10.
 8. M2 x 4mm. Qty = 7.
 9. Dupont Connecting Wires. (As needed)
-10. 3D printed Enclousure (www.thingiverse.com)
+10. 3D printed parts (www.thingiverse.com) *To be Uploaded*
 
 **Sensors to NodeMcu Connections:**
 
