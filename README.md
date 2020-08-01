@@ -1,7 +1,7 @@
 # Smart Contactless Body Temperature Scanning Station.
 # ESPhome
 
-![Image of Product](https://github.com/ceaswaran/Smart-Contactless-Body-Temperature-Scanning-Station-ESP-Home-/blob/master/Body_Temp_Scanning%20station-004.jpg)
+![Image of Product](https://github.com/ceaswaran/Smart-Contactless-Body-Temperature-Scanning-Station-ESP-Home-/blob/master/Body%20scanner_001.6-001.jpg)
 
 **ABOUT THE PROJECT:**
 Smart Contactless Body Temperature Scanning Station is contactless thermal temperature scanner. It operates automatically without needing an operator. 
@@ -42,6 +42,7 @@ https://raw.githubusercontent.com/ceaswaran/Smart-Contactless-Body-Temperature-S
 *After Creating ESP Home Yaml with your Wifi Credentials copy custom_mlx_sensor.h code to ESP ome directory & run Compile generate .bin file from ESPHome*
 
 # Quick Demo :  https://youtu.be/vJ4Sof3lulc
+[![](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc "")
 
 **What Next Planned In Version 2.0**
 * Add MAX30100 Pulse Oximeter Heart Rate Sensor Module.
