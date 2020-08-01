@@ -43,6 +43,7 @@ https://raw.githubusercontent.com/ceaswaran/Smart-Contactless-Body-Temperature-S
 
 # Quick Demo Video: 
 [![Watch the video](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc)
+
 *https://youtu.be/vJ4Sof3lulc*
 
 **What Next Planned In Version 2.0**
