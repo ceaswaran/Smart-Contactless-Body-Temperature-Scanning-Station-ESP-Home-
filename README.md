@@ -43,7 +43,9 @@ https://raw.githubusercontent.com/ceaswaran/Smart-Contactless-Body-Temperature-S
 
 # Quick Demo Video: 
 [![Watch the video](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc)
-[![](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc "")
+```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vJ4Sof3lulc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+```
 
 **What Next Planned In Version 2.0**
 * Add MAX30100 Pulse Oximeter Heart Rate Sensor Module.
