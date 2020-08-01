@@ -27,7 +27,7 @@ It can be used in any place in line with Home Integration platform which support
 7. M3 x 6mm. Qty = 10.
 8. M2 x 4mm. Qty = 7.
 9. Dupont Connecting Wires. (As needed)
-10. 3D printed parts (www.thingiverse.com) *To be Uploaded*
+10. 3D printed parts. (www.thingiverse.com) *To be Uploaded*
 
 **Sensors to NodeMcu Connections:**
 
@@ -41,8 +41,8 @@ https://raw.githubusercontent.com/ceaswaran/Smart-Contactless-Body-Temperature-S
 
 *After Creating ESP Home Yaml with your Wifi Credentials copy custom_mlx_sensor.h code to ESP ome directory & run Compile generate .bin file from ESPHome*
 
-# Quick Demo :  https://youtu.be/vJ4Sof3lulc
-[![](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc "")
+# Quick Demo Video:
+[![Watch the video](http://img.youtube.com/vi/vJ4Sof3lulc/0.jpg)](http://www.youtube.com/watch?v=vJ4Sof3lulc)
 
 **What Next Planned In Version 2.0**
 * Add MAX30100 Pulse Oximeter Heart Rate Sensor Module.
