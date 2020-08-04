@@ -44,7 +44,7 @@ https://www.amazon.com/OSOYOO-Infrared-Obstacle-Avoidance-Arduino/dp/B01I57HIJ0/
 7. M3 x 6mm. Qty = 10.
 8. M2 x 4mm. Qty = 7.
 9. Dupont Connecting Wires. (As needed)
-10. 3D printed parts. (www.thingiverse.com) *To be Uploaded*
+10. 3D printed parts. (https://www.thingiverse.com/thing:4561276) 
 
 **Sensors to NodeMcu Connections:**
 
