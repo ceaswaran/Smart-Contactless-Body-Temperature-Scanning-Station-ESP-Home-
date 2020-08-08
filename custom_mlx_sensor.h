@@ -2,8 +2,9 @@
 #include "Adafruit_MLX90614.h"
 using namespace esphome;
 
-#define irSnsr 14
-#define buzzer 15
+#define irSnsr 14  // Assign GPIO 14 (D5) Pin of NodeMcu /ESP8266 to Obstacle sensor Module (TCRT5000).
+#define buzzer 15  // Assign GPIO 15 (D8) Pin of NodeMcu /ESP8266 to Passive 3V buzzer.
+// WS2811 LED (Just One Pixel) code removed from this code & added to ESPHome Yaml as ESPhome as Inbuilt FAST LED Library. This is to keep custom componet simple & Easy.
 int check = 0;
 int statusSensor = 0;
 
@@ -24,18 +25,16 @@ class CustommlxSensor: public PollingComponent, public Sensor
 		mlx.begin();
 		pinMode(irSnsr, INPUT);
 		check = 0;
-		pinMode(buzzer, OUTPUT);	// Set buzzer - pin 15 as an output
+		pinMode(buzzer, OUTPUT);// Set buzzer as an output
 	}
 
 	void update() override
 	{
 		// This will be called by App.loop()
 		statusSensor = digitalRead(irSnsr);
-//		mlxmotion_sensor->publish_state(statusSensor);
 		if (statusSensor == 0 && check == 0)
 		{
 			check = 1;
-			digitalWrite(led, HIGH);	// Turn the LED on
 			float ATempc = (mlx.readAmbientTempC());
 			mlxesphomeatc_sensor->publish_state(ATempc);
 
@@ -49,7 +48,6 @@ class CustommlxSensor: public PollingComponent, public Sensor
 			mlxesphomeotf_sensor->publish_state(OTempf);
 
 			tone(buzzer,1000, 1000); // Send 1KHz sound signal for 1 sec...
-//			count = 1;
 		}
 		else if (statusSensor == 1)
 		{
