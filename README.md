@@ -50,6 +50,8 @@ https://www.amazon.com/OSOYOO-Infrared-Obstacle-Avoidance-Arduino/dp/B01I57HIJ0/
 
 ![Sensors to NodeMcu Connections](https://github.com/ceaswaran/Smart-Contactless-Body-Temperature-Scanning-Station-ESP-Home-/blob/master/Connection%20chart.JPG)
 
+![Image of Circuit Diagram](https://github.com/ceaswaran/Smart-Contactless-Body-Temperature-Scanning-Station-ESP-Home-/blob/master/Circuit.jpg)
+
 **ESP Home Yaml Code:**
 https://raw.githubusercontent.com/ceaswaran/Smart-Contactless-Body-Temperature-Scanning-Station-ESP-Home-/master/contactless_body_scanning.yml
 
